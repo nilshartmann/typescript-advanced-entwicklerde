@@ -3,10 +3,6 @@ export default undefined;
 // Intro:
 //   - typeof
 //   - keyof Operator am Beispiel Addresse
-//   - Generics
-
-// TypeScript zieht aus  JS-LAUFZEIT Verhalten Rückschlüsse auf das
-// Typsystem
 
 type Person = {
   address: string;
