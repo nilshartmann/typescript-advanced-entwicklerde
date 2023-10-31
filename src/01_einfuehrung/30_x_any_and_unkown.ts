@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export default undefined;
 
 // Example: fetch function
@@ -61,6 +63,23 @@ function fetchUser() {
 
 function isSuccessResponse(candidate: Response): candidate is SuccessResponse {
   return "data" in candidate;
+}
+
+const ErrorResponseSchema = z.object({
+  error: z.string()
+});
+const SuccessResponseSchema = z.object({
+  data: z.string()
+});
+
+const ResponseSchema = ErrorResponseSchema.or(SuccessResponseSchema);
+
+const result = betterFetch();
+const validResult = ResponseSchema.parse(result);
+
+const successResponse = SuccessResponseSchema.safeParse(validResult);
+if (successResponse.success) {
+  successResponse.data.data;
 }
 
 // https://www.typescriptlang.org/docs/handbook/advanced-types.html#type-guards-and-differentiating-types
