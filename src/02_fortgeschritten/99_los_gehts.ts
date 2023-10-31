@@ -3,17 +3,20 @@ import { Flatten } from "./flatten";
 export default undefined;
 
 //
-// Schritt 1: "getPropertyFromPerson"
-//   mapped type: Kopie des Objektes, Index Access Operator
-//   CallbackFn als Rückgabe-Typ
-//   Conditional-Types mit getLength
-//   never mit assert function bzw. union type
-//   Filtern der Property-Tpyen mit "SupportedPropertyTypes"
-//   Umbennen der Keys
-//   Evtl. rausfiltern von eigenschaften, die nicht mit setXXX anfangen
-
-// Vorbereitung:
-// declare function getPropertyFromObject(o: any, p: any): any
+//   - Mapped Type:
+//      - 1:1-Kopie des Objektes
+//      - Key wird optional
+//      - Rückabe-Typ für alle "boolean"
+//   - 2. Mapped Type
+//       - Jetzt mit Funktion
+//   - 3. Conditional Type: Wenn im Original eine Funktion, dann besondere Behandlung
+//       - Eigenes Beispiel Conditional-Types mit getLength
+//       - Bei Funktionen im Mapped Type String "FUNKTION" zurückgeben
+//    - 4. Condiontal Type mit Infer
+//    - 5. String Template Type
+//       - am eigenen Beispiel
+//       - infer (am Beispiel Capitalize)
+//
 
 // Das wollen wir machen:
 declare function createProxy(o: any): any;

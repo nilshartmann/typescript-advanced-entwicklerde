@@ -22,11 +22,20 @@ type Address = {
   plz: string;
 };
 
-function sendLetterTo(p: any) {}
+function sendLetterTo(p: string | Person | Address) {
+  if (typeof p === "string") {
+    // Type Guard
+    return p.toLowerCase(); // p === string
+  }
+  if ("city" in p) {
+    return p.plz.toLowerCase(); // p === Address
+  }
+
+  return p.address.toLowerCase(); // p === Person
+}
 
 // wie kommen wir an 'address'
 //
-
 type Company = {
   name: string;
   address: {
@@ -34,6 +43,8 @@ type Company = {
     plz: string;
   };
 };
+
+type CompanyAddress = Company["address"];
 
 type CompanyWithContacts = {
   name: string;
@@ -45,6 +56,8 @@ type CompanyWithContacts = {
   ];
 };
 
+type Contact = CompanyWithContacts["contacts"][number];
+
 const aCompany = {
   name: "Acme",
   contacts: [
@@ -54,3 +67,5 @@ const aCompany = {
     }
   ]
 };
+
+type AContact = (typeof aCompany)["contacts"][number];

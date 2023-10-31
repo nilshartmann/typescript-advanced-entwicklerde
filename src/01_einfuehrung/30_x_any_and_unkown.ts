@@ -6,18 +6,18 @@ export default undefined;
 //   type SuccessResponse = { data: string };
 //   type Response = ErrorResponse | SuccessResponse;
 
-function fetch(): any {
-  return {};
-}
+// fetch weiß nicht, was für ein Objekt über per HTTP geladen wird
+// Rückgabe-Type also any...
+//  => Konsequenz?
+declare function fetch(): any;
 
+// => wir können auf dem Return-Value ALLES machen
 fetch().toUpperCase();
 
-// what would be a better return type for fetch maybe?
+//  => was wäre besser?
+declare function betterFetch(): unknown;
 
-function betterFetch(): unknown {
-  return fetch() as unknown;
-}
-
+// ...nun müssen wir überprüfen!
 const r = betterFetch();
 if (typeof r === "string") {
   r.toUpperCase();
@@ -28,14 +28,11 @@ if (typeof r === "string") {
 //   type SuccessResponse = { data: string };
 //   type Response = ErrorResponse | SuccessResponse;
 
-// idea: write an abstraction "apiFetch" on top of betterFetch to
-//  we make sure we received the correct result
-
 type ErrorResponse = { error: string };
 type SuccessResponse = { data: string };
 type Response = ErrorResponse | SuccessResponse;
 
-function apiFetch(): Response {
+function loadFromApi(): Response {
   const r = betterFetch();
   ensureValidResponse(r);
   return r;
@@ -53,7 +50,7 @@ function ensureValidResponse(candidate: any): asserts candidate is Response {
 //    ErrorResponse and SuccessResponse
 
 function fetchUser() {
-  const res = apiFetch();
+  const res = loadFromApi();
 
   if (isSuccessResponse(res)) {
     res.data.toUpperCase();
