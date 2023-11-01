@@ -16,6 +16,12 @@ Darin findest Du jeweils zwei Datei-Paare, eine Datei mit `x` im Namen und eine 
 
 Nach dem Event committe ich außerdem den Code, den ich während des Events im Live-Coding erstellt habe.
 
+**Teil 1**:
+
+- `src/01_einfuehrung/10_los_gehts_nach_event.ts`
+- `src/01_einfuehrung/25_tagged_union_types_never_nach_event.ts`
+- `src/01_einfuehrung/30_any_and_unknown_nach_event.ts`
+
 # Kontakt
 
 Wenn Du mehr Interesse an TypeScript, React oder auch Java-bezogenen Themen hast, kannst Du mich gerne
