@@ -13,5 +13,5 @@
     "**/*.pdf": true,
     "**/*.pptx": true
   },
-  "prettier.enable": true
+  "prettier.enable": false
 }

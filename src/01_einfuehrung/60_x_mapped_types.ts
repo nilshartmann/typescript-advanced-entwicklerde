@@ -1,7 +1,4 @@
 export default undefined;
-// [P in keyof OBJECT]
-// type P1 = keyof Person; // name | age
-// type X = Person[name] // string
 
 type Person = {
   id: string;
@@ -52,27 +49,3 @@ function enterNewPersonForm(): NewPerson {
     hobby: "TypeScript"
   };
 }
-
-// -----------------------------------------------------------------------------------------
-//
-//  Wir haben eine generische validate-Funktion, die ein Objekt entgegen nimmt,
-//     und das Ergebnis der Validierung (true/false) pro Feld zurückgibt
-
-type Validated<O> = {
-  [k in keyof O]: boolean;
-};
-
-function validate<O extends object>(object: O): Validated<O> {
-  return null;
-}
-
-const person = {
-  lastame: "Mueller",
-  city: "Hamburg"
-};
-const result = validate(person);
-
-// https://www.typescriptlang.org/docs/handbook/utility-types.html
-
-// https://www.typescriptlang.org/docs/handbook/utility-types.html
-// https://www.typescriptlang.org/play?q=414#example/mapped-types

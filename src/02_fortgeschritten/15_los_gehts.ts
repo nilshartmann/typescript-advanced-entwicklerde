@@ -1,30 +1,22 @@
 export default undefined;
 
-// Intro:
-//  - Wiederholung (evtl)
-//      - TypeScript zieht Rückschlpsse aus JavaSciprt LAUFzeit Verhalten
-//      - Beispiel: Person + Adress in sendLetterTo (typeof, in)
-//      - evtl. Type Predicate Fn
-//      - evtl. Zod
+//  Intro
 
 //  - Werkzeuge für die nächsten Schritte:
+//   - string literal
+//     - union type ("pending", "loading", "finished")
+//     - widening und narrowing
+//   - Index Access Operator (Beispiel: 'address' Company)
+//
 //   - typeof
 //    - Achtung! typeof gibt's in JavaScript und in TypeScript!
-//   - keyof
-//   - Index Access Operator (Beispiel: 'address' Company)
 
-type Person = {
-  address: string;
-};
+declare function setRequestState(state: string): void;
 
-type Address = {
-  city: string;
-  plz: string;
-};
+setRequestState("loading"); // OK
+setRequestState("failed"); // OK
 
-function sendLetterTo(p: any) {}
-
-// wie kommen wir an 'address'
+// wie kommen wir an 'address'?
 //
 
 type Company = {

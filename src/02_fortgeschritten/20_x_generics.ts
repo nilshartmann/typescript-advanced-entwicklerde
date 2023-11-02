@@ -1,12 +1,15 @@
 export default undefined;
 
-//declare function getPropertyFromObject(object: any, key: any): any;
+// Generics
+// - setState-Funktion von React
+//   - Typ Parameter wird übergeben oder abgeleitet
+//   - Zurück kommt Parameter-Typ und Setter-Funktion
+//
+// - indexof
+//   - Typ Parameter
+//   - Default-Value
+//   - Constraints
 
-declare function getPropertyFromObject<O extends object, K extends keyof O>(
-  object: O,
-  key: K
-): O[K];
+type SetterFunction<S> = (newValue: S) => void;
 
-const firstname: string = getPropertyFromObject({ firstname: "Klaus", age: 32 }, "firstname");
-const age: number = getPropertyFromObject({ firstname: "Klaus", age: 32 }, "age");
-const city: string = getPropertyFromObject({ firstname: "Klaus", age: 32 }, "city"); // ERR: 'city' nicht in dem Objekt
+declare function setState<O>(o: O): [O, SetterFunction<O>];

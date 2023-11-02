@@ -3,10 +3,6 @@ import { Flatten } from "./flatten";
 export default undefined;
 
 //
-//   - Mapped Type:
-//      - 1:1-Kopie des Objektes
-//      - Key wird optional
-//      - Rückabe-Typ für alle "boolean"
 //   - 2. Mapped Type
 //       - Jetzt mit Funktion
 //   - 3. Conditional Type: Wenn im Original eine Funktion, dann besondere Behandlung

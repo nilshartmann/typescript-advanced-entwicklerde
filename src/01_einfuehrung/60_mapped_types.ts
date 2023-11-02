@@ -1,6 +1,3 @@
-// [P in keyof OBJECT]
-// type P1 = keyof Person; // name | age
-// type X = Person[name] // string
 export default undefined;
 
 type Person = {
@@ -29,29 +26,6 @@ function enterNewPersonForm(): Person {
   // @ts-ignore   🤔🤔🤔🤔🤔🤔🤔
   return {
     name: "Klaus",
-    age: 32,
+    age: 32
   };
 }
-
-// -----------------------------------------------------------------------------------------
-//
-//  Wir haben eine generische validate-Funktion, die ein Objekt entgegen nimmt,
-//     und das Ergebnis der Validierung (true/false) pro Feld zurückgibt
-
-function validate<O>(object: O): O {
-  return null;
-}
-
-const person = {
-  lastname: "Mueller",
-  city: "Hamburg",
-};
-const result = validate(person);
-
-// @ts-ignore   🤔🤔🤔🤔🤔🤔🤔
-const validLastname: boolean = result.lastname;
-
-// @ts-ignore   🤔🤔🤔🤔🤔🤔🤔
-const validCity: boolean = result.city;
-
-// https://www.typescriptlang.org/docs/handbook/utility-types.html
